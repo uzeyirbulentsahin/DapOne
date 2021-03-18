@@ -22,7 +22,10 @@ namespace Business.Handlers.Products.Commands
     public class UpdateProductCommand : IRequest<IResult>
     {
         public int Id { get; set; }
+        public int CategoryId { get; set; }
         public string Name { get; set; }
+        public decimal UnitsInStock { get; set; }
+        public decimal UnitPrice { get; set; }
 
         public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, IResult>
         {
@@ -44,7 +47,10 @@ namespace Business.Handlers.Products.Commands
                 var isThereProductRecord = await _productRepository.GetAsync(u => u.Id == request.Id);
 
 
+                isThereProductRecord.CategoryId = request.CategoryId;
                 isThereProductRecord.Name = request.Name;
+                isThereProductRecord.UnitsInStock = request.UnitsInStock;
+                isThereProductRecord.UnitPrice = request.UnitPrice;
 
 
                 _productRepository.Update(isThereProductRecord);

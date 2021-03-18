@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations.Ms
 {
     [DbContext(typeof(MsDbContext))]
-    [Migration("20210311104254_AddProduct")]
-    partial class AddProduct
+    [Migration("20210311114932_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1258,8 +1258,17 @@ namespace DataAccess.Migrations.Ms
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitsInStock")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

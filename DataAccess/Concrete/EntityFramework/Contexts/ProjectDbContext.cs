@@ -64,6 +64,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Language> Languages { get; set; }
         public DbSet<Translate> Translates { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }

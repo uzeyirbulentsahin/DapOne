@@ -9,7 +9,10 @@ namespace Business.Handlers.Products.ValidationRules
     {
         public CreateProductValidator()
         {
+            RuleFor(x => x.CategoryId).NotEmpty();
             RuleFor(x => x.Name).NotEmpty();
+            RuleFor(x => x.UnitsInStock).NotEmpty();
+            RuleFor(x => x.UnitPrice).NotEmpty();
 
         }
     }
@@ -17,7 +20,10 @@ namespace Business.Handlers.Products.ValidationRules
     {
         public UpdateProductValidator()
         {
+            RuleFor(x => x.CategoryId).NotEmpty();
             RuleFor(x => x.Name).NotEmpty();
+            RuleFor(x => x.UnitsInStock).NotEmpty();
+            RuleFor(x => x.UnitPrice).NotEmpty();
 
         }
     }

@@ -22,7 +22,10 @@ namespace Business.Handlers.Products.Commands
     public class CreateProductCommand : IRequest<IResult>
     {
 
+        public int CategoryId { get; set; }
         public string Name { get; set; }
+        public decimal UnitsInStock { get; set; }
+        public decimal UnitPrice { get; set; }
 
 
         public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, IResult>
@@ -41,14 +44,17 @@ namespace Business.Handlers.Products.Commands
             [SecuredOperation(Priority = 1)]
             public async Task<IResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)
             {
-                var isThereProductRecord = _productRepository.Query().Any(u => u.Name == request.Name);
+                var isThereProductRecord = _productRepository.Query().Any(u => u.CategoryId == request.CategoryId);
 
                 if (isThereProductRecord == true)
                     return new ErrorResult(Messages.NameAlreadyExist);
 
                 var addedProduct = new Product
                 {
+                    CategoryId = request.CategoryId,
                     Name = request.Name,
+                    UnitsInStock = request.UnitsInStock,
+                    UnitPrice = request.UnitPrice,
 
                 };
 

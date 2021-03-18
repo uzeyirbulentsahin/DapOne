@@ -1256,8 +1256,17 @@ namespace DataAccess.Migrations.Ms
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitsInStock")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

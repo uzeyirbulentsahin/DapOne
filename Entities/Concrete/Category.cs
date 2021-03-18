@@ -5,12 +5,9 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class Product:IEntity
+    public class Category:IEntity
     {
         public int Id { get; set; }
-        public int CategoryId { get; set; }
         public string Name { get; set; }
-        public decimal UnitsInStock { get; set; }
-        public decimal UnitPrice { get; set; }
     }
 }
